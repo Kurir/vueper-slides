@@ -8,7 +8,8 @@ component.vueperslide(
   :style="slideStyles"
   :aria-hidden="slides.activeId === _uid || isSlideVisible ? 'false' : 'true'"
   @mouseenter="$emit('mouse-enter', { slideIndex, title, content, image, link }, $el)"
-  @mouseleave="$emit('mouse-leave')")
+  @mouseleave="$emit('mouse-leave')"
+  @click="$emit('click')")
   template(v-if="videoObj")
     video.vueperslide__video(
       v-if="videoObj.webm || videoObj.mp4"
@@ -56,7 +57,7 @@ export default {
     lazyloaded: { type: Boolean },
     openInNew: { type: [Boolean, String] }
   },
-  emits: ['mouse-enter', 'mouse-leave'],
+  emits: ['mouse-enter', 'mouse-leave', 'click'],
 
   data: () => ({
     // For lazy loading.
